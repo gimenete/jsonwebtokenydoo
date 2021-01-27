@@ -97,21 +97,21 @@ async function main() {
         if (idAnswer === "name") {
           printInstallationCurl(
             signedJWT,
-            "https://api.github.com/users/:something/installation",
+            "http://api.github.localhost/users/:something/installation",
             resourceNameOrId
           );
           response = await axios.get(
-            `https://api.github.com/users/${resourceNameOrId}/installation`,
+            `http://api.github.localhost/users/${resourceNameOrId}/installation`,
             config
           );
         } else {
           printInstallationCurl(
             signedJWT,
-            "https://api.github.com/user/:something/installation",
+            "http://api.github.localhost/user/:something/installation",
             resourceNameOrId
           );
           response = await axios.get(
-            `https://api.github.com/user/${resourceNameOrId}/installation`,
+            `http://api.github.localhost/user/${resourceNameOrId}/installation`,
             config
           );
         }
@@ -119,32 +119,32 @@ async function main() {
         if (idAnswer === "name") {
           printInstallationCurl(
             signedJWT,
-            "https://api.github.com/orgs/:something/installation",
+            "http://api.github.localhost/orgs/:something/installation",
             resourceNameOrId
           );
           response = await axios.get(
-            `https://api.github.com/orgs/${resourceNameOrId}/installation`,
+            `http://api.github.localhost/orgs/${resourceNameOrId}/installation`,
             config
           );
         } else {
           printInstallationCurl(
             signedJWT,
-            "https://api.github.com/organizations/:something/installation",
+            "http://api.github.localhost/organizations/:something/installation",
             resourceNameOrId
           );
           response = await axios.get(
-            `https://api.github.com/organizations/${resourceNameOrId}/installation`,
+            `http://api.github.localhost/organizations/${resourceNameOrId}/installation`,
             config
           );
         }
       } else {
         printInstallationCurl(
           signedJWT,
-          "https://api.github.com/repositories/:something/installation",
+          "http://api.github.localhost/repositories/:something/installation",
           resourceNameOrId
         );
         response = await axios.get(
-          `https://api.github.com/repositories/${resourceNameOrId}/installation`,
+          `http://api.github.localhost/repositories/${resourceNameOrId}/installation`,
           config
         );
       }
@@ -160,14 +160,14 @@ async function main() {
     "curl -i -X POST \\\n",
     `-H "Authorization: Bearer ${chalk.green(signedJWT)}" \\\n`,
     '-H "Accept: application/vnd.github.machine-man-preview+json" \\\n',
-    `https://api.github.com/installations/${chalk.bold(
+    `http://api.github.localhost/app/installations/${chalk.bold(
       installationId
     )}/access_tokens`
   );
   let data;
   try {
     ({ data } = await axios.post(
-      `https://api.github.com/installations/${installationId}/access_tokens`,
+      `http://api.github.localhost/app/installations/${installationId}/access_tokens`,
       null,
       config
     ));
